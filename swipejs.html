@@ -1,0 +1,78 @@
+    <style>
+        #container {
+					border:2px solid red;
+					padding: 0px;	
+					overflow:auto;
+					position:absolute;
+					
+					
+					
+        }
+        .box {
+            border: 1px solid #ccc; 
+						height: 100px ; 
+						width: 100px;
+						margin:auto;
+						float:left;
+        }
+        #box1{
+        	background-color: #ccc; 
+        }
+				#box2{
+					background-color:blue;
+				}
+        
+        
+    </style>
+	<script type="text/javascript">
+	  
+	
+		
+		function ontouch(){
+			var element = document.getElementById('container');
+			var start ={};
+			start.StartX;
+			/*element.addEventListener('touchstart',function(e){
+				start.StartX = e.targetTouches[0].pageX;
+				console.log("StartingX: "+start.StartX);
+			},false);*/
+      element.addEventListener('touchmove',function(e){
+				e.preventDefault();
+				var CurX = e.targetTouches[0].pageX ;
+				console.log(CurX);
+				element.style.left = CurX ;
+      },false);
+		}
+		
+		function move(e){
+			
+	    var cord_x = 0;
+	    
+			var element = document.getElementById('container');
+	    if (!e) {
+	     var e = window.event;
+	    }
+	    if (e.pageX){
+	     cord_x = e.pageX;
+	     
+	    }
+	    else if (e.clientX){
+	     cord_x = e.clientX;
+	     
+	    }
+	    element.style.left = cord_x;
+		}
+			
+	</script>
+<body onmousemove="move(event)">
+    <div id="container">
+			<div class="box" id="box1">
+				
+			</div>
+			
+			
+		<div>
+    <script type="text/javascript">
+    	ontouch();
+    </script>
+</body>
